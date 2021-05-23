@@ -9,6 +9,11 @@ server:
   error:
     include-message: always
 
+springdoc:
+  swagger-ui:
+    path: /
+  show-actuator: true
+
 people:
   endpoint: ${PEOPLE_ENDPOINT:https://dwp-techtest.herokuapp.com}
   max-distance: ${MAX_DISTANCE:50}

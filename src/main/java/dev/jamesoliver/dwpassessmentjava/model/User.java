@@ -34,5 +34,4 @@ public class User {
     private String ipAddress;
     private double latitude;
     private double longitude;
-    private String city;
 }
