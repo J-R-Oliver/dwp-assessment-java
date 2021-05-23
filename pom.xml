@@ -35,6 +35,8 @@
         <jacoco.version>0.8.6</jacoco.version>
         <pitest-maven.version>1.6.2</pitest-maven.version>
         <pitest-junit5.version>0.14</pitest-junit5.version>
+        <maven-javadoc.version>3.2.0</maven-javadoc.version>
+        <lombok-maven.version>1.18.20.0</lombok-maven.version>
     </properties>
 
     <dependencies>
@@ -241,6 +243,46 @@
                         <param>dev.jamesoliver.dwpassessmentjava.*</param>
                     </targetTests>
                     <mutationThreshold>80</mutationThreshold>
+                </configuration>
+            </plugin>
+
+            <!-- Generate Javadocs -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-javadocs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <defaultVersion>${project.version}</defaultVersion>
+                    <sourcepath>target/generated-sources/delombok</sourcepath>
+                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+                </configuration>
+            </plugin>
+
+            <!-- Creates delomboked source code to complete Javadocs generation -->
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>${lombok-maven.version}</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>delombok</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <addOutputDirectory>false</addOutputDirectory>
+                    <sourceDirectory>src/main/java</sourceDirectory>
                 </configuration>
             </plugin>
         </plugins>
