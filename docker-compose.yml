@@ -1,0 +1,27 @@
+version: "3.8"
+
+networks:
+  default:
+    name: dwp-assessment-java-network
+
+services:
+  app:
+    build:
+      context: .
+    container_name: dwp-assessment-java
+    ports:
+      - 8080:8080
+    environment:
+      PEOPLE_ENDPOINT: http://wiremock:8080
+    depends_on:
+      - wiremock
+
+  wiremock:
+    image: rodolpheche/wiremock
+    container_name: wiremock
+    command: --verbose
+    ports:
+      - 8090:8080
+    volumes:
+      - ./wiremock/files:/home/wiremock/__files
+      - ./wiremock/mappings:/home/wiremock/mappings
