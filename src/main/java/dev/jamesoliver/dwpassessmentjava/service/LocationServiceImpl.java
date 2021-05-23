@@ -10,7 +10,7 @@ public class LocationServiceImpl implements LocationService {
 
     public double distanceFromCity(Cities city, User user) {
         double distanceInMeters =
-                GeoDistanceUtils.vincentyDistance(
+                GeoDistanceUtils.haversin(
                         city.getLatitude(),
                         city.getLongitude(),
                         user.getLatitude(),

@@ -34,7 +34,7 @@ class LocationServiceTest {
 
             double distanceMiles = locationService.distanceFromCity(Cities.LONDON, user);
 
-            assertEquals(4395.053464026234, distanceMiles);
+            assertEquals(5433.428353701655, distanceMiles);
         }
     }
 
