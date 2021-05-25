@@ -262,7 +262,7 @@
                 </executions>
                 <configuration>
                     <defaultVersion>${project.version}</defaultVersion>
-                    <sourcepath>target/generated-sources/delombok</sourcepath>
+                    <sourcepath>target/delombok</sourcepath>
                     <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                 </configuration>
             </plugin>
@@ -281,8 +281,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <addOutputDirectory>false</addOutputDirectory>
                     <sourceDirectory>src/main/java</sourceDirectory>
+                    <outputDirectory>${project.build.directory}/delombok</outputDirectory>
+                    <addOutputDirectory>false</addOutputDirectory>
                 </configuration>
             </plugin>
         </plugins>
