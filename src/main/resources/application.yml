@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: dwp-assessment-java
+
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: ${CONTEXT_PATH:/}
+  error:
+    include-message: always
+
+springdoc:
+  swagger-ui:
+    path: /
+  show-actuator: true
+
+people:
+  endpoint: ${PEOPLE_ENDPOINT:https://dwp-techtest.herokuapp.com}
+  max-distance: ${MAX_DISTANCE:50}
